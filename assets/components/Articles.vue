@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <Navbar :navItems="navItems" activeRoute="/articles" />
-  </div>
+  <Navbar />
 </template>
 
 <script>
