@@ -7,4 +7,8 @@
 import "./styles/app.css";
 import "bootstrap";
 
-console.log("This log comes from assets/app.js - welcome to AssetMapper! 🎉");
+import { createApp } from "vue";
+import Home from "./components/Home.vue";
+import router from "./router";
+
+createApp(Home).use(router).mount("#app");
