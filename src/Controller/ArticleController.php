@@ -35,7 +35,7 @@ class ArticleController extends AbstractController
     #[Route('/article/{guid}', name: 'readArticle', methods: ['GET'])]
     public function readArticle(
         FeedService $feedService,
-        string $guid
+        int $guid
     ): Response {
         $articles = $feedService->fetchFeedData();
         if ($articles === null) {
@@ -44,7 +44,14 @@ class ArticleController extends AbstractController
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        $key = array_search($guid, array_column($articles, 'guid'));
+        $key = array_search($guid, array_map(
+            function (string $originalGuid) {
+                preg_match('/p=(\d+)/', $originalGuid, $matches);
+
+                return $matches[1];
+            },
+            array_column($articles, 'guid')
+        ));
         if ($key === false) {
             return $this->json([
                 'message' => 'Article with guid: '.$guid.' was not found.',
