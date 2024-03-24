@@ -1,14 +1,7 @@
-<template>
-  <Navbar />
-</template>
+<template>This is home page</template>
 
 <script>
-  import Navigation from "./Navigation.vue";
-
   export default {
     name: "Home",
-    components: {
-      Navbar: Navigation,
-    },
   };
 </script>

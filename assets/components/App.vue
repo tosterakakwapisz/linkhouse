@@ -11,29 +11,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <li class="nav-item" v-for="item in menuItems" :key="item.path">
-            <router-link :to="item.path" class="nav-link">
-              {{ item.label }}
-            </router-link>
+          <li class="nav-item">
+            <RouterLink to="/app" class="nav-link">Home</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/app/articles" class="nav-link">
+              Articles
+            </RouterLink>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="container pt-3">
+    <div class="row">
+      <div class="col-12">
+        <RouterView />
+      </div>
+    </div>
+  </div>
 </template>
-
-<script>
-  export default {
-    name: "Navigation",
-    data() {
-      return {
-        menuItems: [
-          { label: "Strona główna", path: "/app" },
-          { label: "Artykuły", path: "/app/articles" },
-        ],
-      };
-    },
-  };
-</script>
-
-<style></style>

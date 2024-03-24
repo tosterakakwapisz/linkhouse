@@ -8,7 +8,7 @@ import "./styles/app.css";
 import "bootstrap";
 
 import { createApp } from "vue";
-import Home from "./components/Home.vue";
+import App from "./components/App.vue";
 import router from "./router";
 
-createApp(Home).use(router).mount("#app");
+createApp(App).use(router).mount("#app");
