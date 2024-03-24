@@ -9,6 +9,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ArticleController extends AbstractController
 {
+    /**
+     * Returns collection of articles from `https://linkhouse.pl/feed/`.
+     */
     #[Route('/articles', name: 'readArticleCollection', methods: ['GET'])]
     public function readArticleCollection(
         FeedService $feedService
@@ -32,6 +35,13 @@ class ArticleController extends AbstractController
         return $this->json($mappedArticles, Response::HTTP_OK);
     }
 
+    /**
+     * Returns single article from `https://linkhouse.pl/feed/` by guid.
+     *
+     * Guid has to be integer, because guid that looks like this `https://linkhouse.pl/?p=30523` will make Symfony think that it's not that specific route.
+     * I even tried to user requirements in Route attribute, but I couldn't get around `?` character.
+     * E.g. to return article with guid `https://linkhouse.pl/?p=30523` would have to extract `30523` and use in this endpoint.
+     */
     #[Route('/article/{guid}', name: 'readArticle', methods: ['GET'])]
     public function readArticle(
         FeedService $feedService,
