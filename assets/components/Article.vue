@@ -39,14 +39,18 @@
         return matches[1];
       },
       async fetchDetails() {
-        let guid = this.extractGuid(this.guid);
-        let response = await fetch(`/article/${guid}`);
-        let responseData = await response.json();
-        if (!response.ok) {
-          this.errorMsg = `Could not get article with GUID: ${guid}. Error: ${responseData.message}`;
-        }
+        try {
+          let guid = this.extractGuid(this.guid);
+          let response = await fetch(`/article/${guid}`);
+          let responseData = await response.json();
+          if (!response.ok) {
+            this.errorMsg = `Could not get article with GUID: ${guid}. Error: ${responseData.message}`;
+          }
 
-        this.details = responseData;
+          this.details = responseData;
+        } catch (error) {
+          this.errorMsg = `There was an error getting articles. Error: ${error}`;
+        }
       },
     },
   };
