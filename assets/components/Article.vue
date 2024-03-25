@@ -1,8 +1,6 @@
 <template>
   <h3 class="mb-3">
-    <RouterLink :to="{ name: 'articles'}">
-      Back to articles
-    </RouterLink>
+    <RouterLink :to="{ name: 'articles' }">Back to articles</RouterLink>
   </h3>
   <div v-if="errorMsg">{{ errorMsg }}</div>
   <div v-else class="card" :data-guid="details.guid">
@@ -11,10 +9,10 @@
       <h6 class="card-subtitle my-3 text-body-secondary">
         {{ details.category }}
       </h6>
-      <p class="card-text">
-        <div v-html="details.description"></div>
-      </p>
-      <a :href="details.link" target="_blank" class="card-link">Read full article</a>
+      <p v-html="details.description" class="card-text"></p>
+      <a :href="details.link" target="_blank" class="card-link">
+        Read full article
+      </a>
     </div>
   </div>
 </template>
