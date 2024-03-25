@@ -1,5 +1,10 @@
 <template>
-  <div v-if="errorMsg">errorMsg</div>
+  <h3 class="mb-3">
+    <RouterLink :to="{ name: 'articles'}">
+      Back to articles
+    </RouterLink>
+  </h3>
+  <div v-if="errorMsg">{{ errorMsg }}</div>
   <div v-else class="card" :data-guid="details.guid">
     <div class="card-body">
       <h5 class="card-title mb-0">{{ details.title }}</h5>
