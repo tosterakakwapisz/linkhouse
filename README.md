@@ -13,11 +13,13 @@ Setup project
 composer install
 npm install
 
-# build frontend
-# watch
+# watch frontend
 npm run watch
-# or just build
+# or build frontend
 npm run dev
+
+# serve app
+symfony server:start -d
 ```
 
 Then go to `http://localhost:8000/app` to launch frontend app.
